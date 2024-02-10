@@ -1,0 +1,5 @@
+label xxxx xxxo xxox xxoo xoxx xoxo xoox xooo oxxx oxxo oxox oxoo ooxo ooxx ooox oooo
+hole1 x x x x x x x x o o o o o o o o
+hole2 x x x x o o o o x x x x o o o o
+hole3 x x o o x x o o x x o o x x o o
+hole4 x o x o x o x o x o x o o x x o

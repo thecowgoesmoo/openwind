@@ -1,0 +1,9 @@
+# x_0  	x_1    	r_0    	r_1    	type   	additional-parameters  
+0.     	0.0009 	0.0087 	0.0046 	Circle	-0.01  
+0.0009 	0.0014 	0.0046 	0.0024 	Circle	0.007  
+0.0014 	0.01   	0.0024 	0.003  	Cone
+# the discontinuity of section is here done by fixing r_0 different to the previous r_1
+0.01   	0.03   	0.0042 	0.005  	Cone
+0.03   	0.1    	0.005  	0.005  	Spline	0.04   	0.07   	0.006  	0.004  	
+0.1    	0.12   	0.005  	0.01   	Exponential
+0.12   	0.14   	0.01   	0.05   	Bessel	0.8    

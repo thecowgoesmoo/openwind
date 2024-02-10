@@ -1,0 +1,4 @@
+! unit = m
+! diameter = False
+        label      variety     position       length       radius reconnection
+       piston        valve      0.01500      0.05500      0.00250      0.01600

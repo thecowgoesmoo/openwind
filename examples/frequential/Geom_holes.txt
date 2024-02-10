@@ -1,0 +1,8 @@
+label	position  type	radius	chimney
+#----------------------------------------
+hole1	0.2	linear	0.002     0.005
+hole2	0.6	linear	0.0025     0.006
+hole3	1.0	linear	0.005      0.007
+hole4	1.2	linear	0.0075    0.01
+
+          

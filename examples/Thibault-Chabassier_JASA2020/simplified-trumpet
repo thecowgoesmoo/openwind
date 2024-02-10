@@ -1,0 +1,13 @@
+# This file is the instrument gemetry file for the paper:
+# ...
+
+# It consists of a simplified trumpet:
+
+# MAIN TUBE is a cylinder
+# x1  x2    r1   r2
+  0.0 0.716 6e-3 6e-3 linear
+
+# BELL
+# The bell's radius is given by a power-function r = c*x^-alpha
+# x1      x2      r1    r2    type    alpha
+  0.716   1.335   6e-3  6e-2  bessel  0.7

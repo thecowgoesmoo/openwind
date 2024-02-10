@@ -1,0 +1,12 @@
+label     C     D     E     F     G     A     B     C2
+hole1     x     x     x     x     x     x     x     o
+hole2     x     x     x     x     x     x     o     x
+hole3     x     x     x     x     x     o     o     o
+hole4     x     x     x     x     o     o     o     o
+hole5     x     x     x     o     o     o     o     o
+hole6     x     x     o     x     o     o     o     o
+hole7     x     x     x     x     x     x     x     x
+hole8     x     o     o     o     o     o     o     o
+hole9     o     o     o     o     o     o     o     o
+
+  

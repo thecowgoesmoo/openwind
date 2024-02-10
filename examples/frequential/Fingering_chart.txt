@@ -1,0 +1,7 @@
+label     A     B     C     D     E
+hole1     x     x     x     x     o
+hole2     x     x     x     o     x
+hole3     x     x     o     x     x
+hole4     x     o     x     x     x
+
+  

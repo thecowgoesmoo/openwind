@@ -1,0 +1,10 @@
+! unit = mm
+! diameter = True
+#   x0	    x1	    D0	    D1	       type	 param
+   0.0	   0.9	  17.4	   9.2	     Circle	 -10.0
+   0.9	   1.4	   9.2	   4.8	     Circle	   7.0
+   1.4	  10.0	   4.8	   6.0	       Cone
+  10.0	  30.0	   8.4	  10.0	       Cone
+  30.0	 100.0	  10.0	  10.0	     Spline	  40.0	  70.0	  12.0	   8.0	
+ 100.0	 120.0	  10.0	  20.0	Exponential
+ 120.0	 140.0	  20.0	 100.0	     Bessel	   0.8

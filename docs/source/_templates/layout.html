@@ -1,0 +1,51 @@
+{%- extends "!layout.html" %}
+{% block linktags %}
+<link rel="shortcut icon" href="https://files.inria.fr/openwind/pictures/favicon.ico"/>
+{% endblock %}
+
+{% block sidebartitle %}
+
+
+<a href="https://openwind.inria.fr/">
+  <!-- {{ pathto('_static/ + logo ')}} -->
+  <img src="https://files.inria.fr/openwind/pictures/logo.png" class="logo" style="width: 100px;" alt="{{ _('Logo') }}"/>
+    Openwind
+  <br>
+  <!-- <i class="fa fa-reply"> </i>   -->
+</a>
+
+
+{% if theme_display_version %}
+  {%- set nav_version = version %}
+  {% if READTHEDOCS and current_version %}
+    {%- set nav_version = current_version %}
+  {% endif %}
+  {% if nav_version %}
+    <div class="version">
+      {{ nav_version }}
+    </div>
+  {% endif %}
+{% endif %}
+
+<style>
+   /* Sidebar header (and topbar for mobile) */
+   .wy-side-nav-search, .wy-nav-top {
+     background: #f37262;
+   }
+   /* caption text */
+   .caption-text, .wy-breadcrumbs-aside {
+     color: #f37262;
+   }
+   /* Sidebar
+   .wy-nav-side {
+     background: #ff0000; */
+   }
+ </style>
+
+<!-- <a href="http://files.inria.fr/openwind/docs/#" class="icon icon-home">
+  Openwind Documentation
+</a> -->
+{% include "searchbox.html" %}
+
+
+{% endblock %}

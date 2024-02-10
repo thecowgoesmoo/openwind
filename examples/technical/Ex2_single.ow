@@ -1,0 +1,37 @@
+! version = 0.9.0
+! unit = mm
+! diameter = False
+
+# this is a comment written in the file
+
+**********Main Bore**********
+#    x0	     x1	     r0	     r1	       type	  param
+   0	  30	   2	   3	       Cone
+  30	  50	   3	   3	       Cone
+  50	 450	   3	   8.5	       Cone
+ 450	 560	  10	  20	       Cone
+ 560	 570	  20	  18	       Cone
+ 
+**********Side Components**********
+    label position   length   radius
+    hole1      140        5      1.6
+    hole2      170        5      1.7
+    hole3      210        5      2.5
+    hole4      260        5        3
+    hole5      300        5      2.7
+    hole6      330        5      2.5
+    hole7      380        5        3
+    hole8      410        5        4
+    hole9      470        5        6 
+
+**********Fingering Chart**********
+ label     C     D     E     F     G     A     B    C2
+ hole1     x     x     x     x     x     x     x     o
+ hole2     x     x     x     x     x     x     o     x
+ hole3     x     x     x     x     x     o     o     o
+ hole4     x     x     x     x     o     o     o     o
+ hole5     x     x     x     o     o     o     o     o
+ hole6     x     x     o     x     o     o     o     o
+ hole7     x     x     x     x     x     x     x     x
+ hole8     x     o     o     o     o     o     o     o
+ hole9     o     o     o     o     o     o     o     o
