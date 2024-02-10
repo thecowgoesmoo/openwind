@@ -1,0 +1,51 @@
+{% set name = "openwind" %}
+{% set version = "0.11.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  # sha256: 789d9b339b743853d4c967ad94c0bb2a78c1eb5a166096429a1c33b67c69b3f2
+  # Note from openwind team: sha256 verification has been commented to allow CI to automatically create new conda package from pypi without hash verification.
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - matplotlib
+    - numpy
+    - pip
+    - python
+    - scipy
+    - h5py
+  run:
+    - matplotlib
+    - numpy
+    - python
+    - scipy
+    - h5py
+
+test:
+  imports:
+    - openwind
+    - openwind.continuous
+    - openwind.design
+    - openwind.discretization
+    - openwind.frequential
+    - openwind.inversion
+    - openwind.technical
+    - openwind.temporal
+
+about:
+  home: "https://openwind.inria.fr/"
+  license: "GNU General Public v3 (GPLv3)"
+  license_family: GPL3
+  license_file: LICENSE
+  summary: "Open source library to design wind instruments"
+  doc_url: "https://files.inria.fr/openwind/docs"
+  dev_url:

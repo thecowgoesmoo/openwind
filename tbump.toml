@@ -1,0 +1,57 @@
+# Uncomment this if your project is hosted on GitHub:
+# github_url = "https://github.com/<user or organization>/<project>/"
+
+[version]
+current = "0.11.1"
+
+# Example of a semver regexp.
+# Make sure this matches current_version before
+# using tbump
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  '''
+
+[git]
+message_template = "Bump version: 0.11.1 to {new_version}"
+tag_template = "v{new_version}"
+
+# For each file to patch, add a [[file]] config
+# section containing the path of the file, relative to the
+# tbump.toml location.
+[[file]]
+src = "tbump.toml"
+search = '{current_version}'
+
+[[file]]
+src = "setup.py"
+search = 'version="{current_version}"'
+
+[[file]]
+src = "openwind/__init__.py"
+search = '__version__ = "{current_version}"'
+
+[[file]]
+src = "meta.yaml"
+search = 'set version = "{current_version}"'
+
+# You can specify a list of commands to
+# run after the files have been patched
+# and before the git commit is made
+
+[[before_commit]]
+name = "update changelog"
+cmd = "python docs/update_changelog.py {new_version}"
+
+# [[before_commit]]
+# name = "update documentation how-to"
+# cmd = "python docs/update_howto.py"
+
+# Or run some commands after the git tag and the branch
+# have been pushed:
+#  [[after_push]]
+#  name = "publish"
+#  cmd = "./publish.sh"
