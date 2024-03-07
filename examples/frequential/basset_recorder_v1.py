@@ -33,11 +33,17 @@ from openwind.continuous import radiation_model
 from openwind.impedance_tools import plot_impedance
 
 # %% Instrument definition
-
-Rp = 5e-3
-geom = [[0, 0.5, Rp, Rp, "cone"]]
+# 349.2 Hz
+#18 mm
+#13.8 mm
+#15 mm
+#13 x 4
+Rp = 12.5e-3 #7.5e-3
+#geom = [[0, 0.5, Rp, Rp, "cone"]]
+#geom = [[0, 0.4911, Rp, Rp, "cone"]]
+geom = [[0, 0.981+0.016, Rp, Rp, "cone"]]
 temperature = 25
-freq = np.arange(100, 1000, 2)
+freq = np.arange(100, 2000, 2)
 my_player = Player("FLUTE")
 
 # Let's imagine a simple cylindrical flute 50cm long with a radius Rp. As
@@ -57,7 +63,7 @@ my_player = Player("FLUTE")
 # impedance and can be modified a posteriori using the update_curve method.
 
 
-Rw = 4e-3  # the equivalent radius of the window
+Rw = 7e-3 #4e-3  # the equivalent radius of the window
 my_player.update_curve("radiation_category", "infinite_flanged")
 my_player.update_curve("section", np.pi * Rw**2)
 
@@ -108,7 +114,7 @@ my_recorder = Player("FLUTE")
 new_params = {"section": np.pi * Rw**2,
               "radiation_category": "window",
               "edge_angle": 15,  # the edge angle in degree
-              "wall_thickness": 5e-3,# the wall thickness in meter
+              "wall_thickness": 2e-3,# the wall thickness in meter
               }
 my_recorder.update_curves(new_params)  # set the new control parameters
 
@@ -126,13 +132,28 @@ plt.show()
 # Again, the entire chimney tube below the edge should be indicated as the
 # chimney length of the hole.
 
-Remb_out = 3e-3
+Remb_out = 7.8e-3
 emb_label = 'embouchure'
-side_holes = [['label',     'position', 'chimney',  'radius',   'radius_out'],
-              [emb_label,   0.03,      5e-3,        5e-3,       Remb_out], # the embouchure hole
-               ['hole1',     0.15,       3e-3,       4e-3,       4e-3],
-               ['hole2',     0.20,       3e-3,       4e-3,       4e-3],
-               ['hole3',     0.30,       3e-3,       4e-3,       4e-3],
+#side_holes = [['label',     'position', 'chimney',  'radius',   'radius_out'],
+#              [emb_label,   0.03,      5e-3,        5e-3,       Remb_out], # the embouchure hole
+#               ['hole1',     0.265-8e-3,       6e-3,       4e-3,       4e-3],
+#               ['hole2',     0.297-8e-3,       6e-3,       4e-3,       4e-3],
+#               ['hole3',     0.334-8e-3,       6e-3,       4e-3,       4e-3],
+#               ['hole4',     0.375-8e-3,       6e-3,       4e-3,       4e-3],
+#               ['hole5',     0.397-8e-3,       6e-3,       4e-3,       4e-3],
+#               ['hole6',     0.445-8e-3,       6e-3,       4e-3,       4e-3],
+#              ]
+
+oSet = 0.016
+
+side_holes = [['label',     'position',  'chimney',  'radius', 'radius_out'],
+              [emb_label,    0.01,        2e-3,       7.8e-3,     Remb_out], # the embouchure hole
+               ['hole1',     oSet+0.383,       2.8e-3,       3.5e-3,     3.5e-3],
+               ['hole2',     oSet+0.455,       2.8e-3,       3.5e-3,     3.5e-3],
+               ['hole3',     oSet+0.535,       2.8e-3,       3.5e-3,     3.5e-3],
+               ['hole4',     oSet+0.625,       2.8e-3,       3.5e-3,     3.5e-3],
+               ['hole5',     oSet+0.705,       2.8e-3,       3.5e-3,     3.5e-3],
+               ['hole6',     oSet+0.777,       2.8e-3,       3.5e-3,     3.5e-3],
               ]
 
 # This hole should be excluded from the fingering chart. A warning will be printed
@@ -140,26 +161,26 @@ side_holes = [['label',     'position', 'chimney',  'radius',   'radius_out'],
 # However, the "entrance" of the pipe (where the cork is placed) can now be
 # included in the fingering grid (which can be useful for other transverse instruments)
 
-fing_chart = [['label',     'A', 'B', 'C'],
-              ['entrance',  'x', '0.5', 'x'],
-              ['hole1',     'x', 'x', 'x'],
-              ['hole2',     'x', 'x', 'o'],
-              ['hole3',     'x', 'x', 'o'],
-              ]
+#fing_chart = [['label',     'A', 'B', 'C'],
+#              ['entrance',  'x', '0.5', 'x'],
+#              ['hole1',     'x', 'x', 'x'],
+#              ['hole2',     'x', 'x', 'o'],
+#              ['hole3',     'x', 'x', 'o'],
+#              ]#
 
-# The source location must be indicated in `ImpedanceComputation` or `InstrumentPhysics`
-# with the keyword "source_location" with the label of the desired side hole.
+## The source location must be indicated in `ImpedanceComputation` or `InstrumentPhysics`
+## with the keyword "source_location" with the label of the desired side hole.#
 
 player_trans = Player("FLUTE")
 player_trans.update_curve("radiation_category", "infinite_flanged")
-player_trans.update_curve("section", np.pi * Remb_out**2)
+player_trans.update_curve("section", np.pi * Remb_out**2)#
 
-transverse_flute = ImpedanceComputation(freq, geom, side_holes, fing_chart,
-                                        player=player_trans,
-                                        note='A',
-                                        temperature=temperature,
-                                        source_location=emb_label, # this option specify that the acoustic source (the observation point) is located at the "embouchure" hole
-                                        )
+#transverse_flute = ImpedanceComputation(freq, geom, side_holes, fing_chart,
+#                                        player=player_trans,
+#                                        note='A',
+#                                        temperature=temperature,
+#                                        source_location=emb_label, # this option specify that the acoustic source (the observation point) is located at the "embouchure" hole
+#                                        )#
 
 fig_trans = plt.figure()
 #transverse_flute.plot_admittance(figure=fig_trans, label='A - entrance (cork) fully closed')
@@ -168,10 +189,13 @@ fig_trans = plt.figure()
 
 # it is also possible to specify that the "entrance " (cork) is closed by using
 # the keyword "radiation_category"
-fing_chart2 = [['label',     'A', 'B', 'C'],
-              ['hole1',     'x', 'x', 'x'],
-              ['hole2',     'x', 'x', 'o'],
-              ['hole3',     'x', 'o', 'o'],
+fing_chart2 = [['label',     'F', 'G', 'A', 'Bb', 'C', 'D', 'E'],
+              ['hole1',      'x', 'x',  'x', 'x',  'x', 'x',  'o'],
+              ['hole2',      'x', 'x',  'x', 'x',  'x', 'o',  'o'],
+              ['hole3',      'x', 'x',  'x', 'x',  'o', 'o',  'o'],
+              ['hole4',      'x', 'x',  'x', 'o',  'o', 'o',  'o'],
+              ['hole5',      'x', 'x',  'o', 'o',  'o', 'o',  'o'],
+              ['hole6',     'x', 'o',  'o', 'o',  'o', 'o',  'o'],
               ]
 
 transverse_flute2 = ImpedanceComputation(freq, geom, side_holes, fing_chart2,
@@ -181,13 +205,26 @@ transverse_flute2 = ImpedanceComputation(freq, geom, side_holes, fing_chart2,
                                         source_location=emb_label,
                                         radiation_category={'entrance':'closed', 'bell':'unflanged', 'holes':'unflanged'}
                                         )
+transverse_flute2.set_note('F')
+transverse_flute2.plot_admittance(figure=fig_trans, linestyle='-',
+                                  label='F')
+transverse_flute2.set_note('G')
+transverse_flute2.plot_admittance(figure=fig_trans, linestyle='-',
+                                  label='G')
 transverse_flute2.set_note('A')
 transverse_flute2.plot_admittance(figure=fig_trans, linestyle='-',
                                   label='A')
-transverse_flute2.set_note('B')
+transverse_flute2.set_note('Bb')
 transverse_flute2.plot_admittance(figure=fig_trans, linestyle='-',
-                                  label='B')
+                                  label='Bb')
 transverse_flute2.set_note('C')
 transverse_flute2.plot_admittance(figure=fig_trans, linestyle='-',
                                   label='C')
+transverse_flute2.set_note('D')
+transverse_flute2.plot_admittance(figure=fig_trans, linestyle='-',
+                                  label='D')
+transverse_flute2.set_note('E')
+transverse_flute2.plot_admittance(figure=fig_trans, linestyle='-',
+                                  label='E')
+
 plt.show()
