@@ -1,0 +1,8 @@
+{
+  "version": "0.1",
+  "source": "NederveenWoodwindMeasurementsV2.pdf",
+  "description": "Schema stub for Nederveen woodwind bore and vent measurements in tidy format.",
+  "tables": [],
+  "quantities": {},
+  "footnotes": {}
+}
